@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "parcel editing-page.html -p 8000",
     "dev": "parcel editing-page.html -p 8000",
     "test": "cross-env JEST_PUPPETEER_CONFIG=config/jest-puppeteer.config.js jest --silent --coverage --verbose --config config/jest.config.js",
     "test:unit": "jest --config config/jest.config.js --selectProjects Unit --verbose --coverage",
