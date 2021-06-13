@@ -8,17 +8,17 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "/node_modules/parcel-bundler/bin/cli.js editing-page.html",
+    "start": "parcel editing-page.html",
     "dev": "parcel editing-page.html -p 8000",
     "test": "cross-env JEST_PUPPETEER_CONFIG=config/jest-puppeteer.config.js jest --silent --coverage --verbose --config config/jest.config.js",
     "test:unit": "jest --config config/jest.config.js --selectProjects Unit --verbose --coverage",
     "test:jsdom": "jest --config config/jest.config.js --selectProjects Jsdom --verbose",
     "test:e2e": "cross-env JEST_PUPPETEER_CONFIG=config/jest-puppeteer.config.js jest --config config/jest.config.js --selectProjects End-to-End",
     "doc": "jsdoc -c config/jsdoc.json",
-    "build": "parcel editing-page.html",
+    "build": "cross-env NODE_ENV=production parcel build editing-page.html --public-url https://gaurav-dheeraj.github.io/source/",
     "heroku-postbuild": "parcel build editing-page.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "rm -rf dist && npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +36,6 @@
     "jest-transform-css": "^2.1.0",
     "jsdoc": "^3.6.7",
     "parcel": "^2.0.0-beta.2",
-    "parcel-bundler": "^1.12.5",
     "prettier": "^2.3.0",
     "puppeteer": "^9.1.1"
   },
